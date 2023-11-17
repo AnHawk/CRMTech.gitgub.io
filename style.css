@@ -1,0 +1,453 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.card {
+  background-color: #e91e63;
+  color: #fff;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__inner {
+  padding: 10px;
+}
+
+.card__class {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.card__type {
+  margin-right: 10px;
+}
+
+.card__title {
+  margin-bottom: 5px;
+}
+
+.card__type {
+  margin-bottom: 5px;
+}
+
+.discription__block {
+  max-width: 100%;
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.low-priority {
+  background-color: green;
+}
+
+.medium-priority {
+  background-color: yellow;
+}
+
+.high-priority {
+  background-color: red;
+}
+
+.done-card {
+  opacity: 0.5;
+}
+
+.todo-card {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.taskTable {
+  color: black;
+}
+
+.taskTable__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskTable__filters {
+  display: flex;
+  list-style: none;
+}
+
+.taskTable__filter {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  margin-right: 30px;
+  padding: 15px 25px;
+  border-radius: 5px;
+}
+
+.major {
+  background-color: red;
+}
+
+.middle {
+  background-color: yellow;
+}
+
+.light {
+  background-color: green;
+}
+
+.taskTable__counter {
+  background-color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.tackTable__title {
+  font-family: "Dela Gothic One", cursive;
+}
+
+.table__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toDo, #inProggres, #hold, #done {
+  width: 300px;
+  height: 100vh;
+  margin: 20px;
+  border: 2px dashed black;
+}
+
+.table__section {
+  font-family: "Dela Gothic One", cursive;
+  text-align: center;
+  color: black;
+  border-bottom: 2px dashed black;
+}
+
+a {
+  color: #000;
+}
+
+/* header */
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: "Dela Gothic One", cursive;
+}
+
+/* menu */
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  display: flex;
+  align-items: center;
+}
+
+/* menu icon */
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+.profile__img {
+  height: 32px;
+  width: 32px;
+}
+
+/* 48em = 768px */
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+body {
+  background: #B5B5B5;
+}
+
+.mainPage_hero {
+  margin: 15% auto;
+}
+
+.mainPage_hero_inner {
+  text-align: center;
+}
+
+.mainPage_hero_hello {
+  color: white;
+  font-family: "Dela Gothic One", cursive;
+}
+
+.mainPage_hero_BTN {
+  font-family: "Dela Gothic One", cursive;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+}
+
+.mainPage_hero_BTN:hover {
+  opacity: 80%;
+}
+
+.modal {
+  font-family: "Dela Gothic One", cursive;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.modal_content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 88%;
+  z-index: 99;
+}
+
+.close_modal_window {
+  color: #aaa;
+  font-weight: 700;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.modal_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.modal_title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.model_content_logIn {
+  width: 30%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+}
+
+.textarea {
+  height: 200px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Form Layout */
+.form-wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 0 1em;
+  max-width: 370px;
+}
+
+h1 {
+  text-align: center;
+  padding: 1em 0;
+}
+
+form {
+  padding: 0 1.5em;
+}
+
+.form-item {
+  margin-bottom: 0.75em;
+  width: 100%;
+}
+
+.form-item input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form-item input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
+}
+
+.button-panel {
+  margin: 2em 0 0;
+  width: 100%;
+}
+
+.button-panel .button {
+  background: #f16272;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: "Dela Gothic One", cursive;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.button:hover {
+  background: #ee3e52;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,60 @@
+.card{
+    background-color: #e91e63;
+    color: #fff;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.card__header{
+    display: flex;
+    justify-content: space-between;
+}
+.card__inner{
+    padding: 10px;
+}
+.card__class{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.card__type{
+    margin-right: 10px;
+}
+
+.card__title{
+    margin-bottom: 5px;
+}
+
+.card__type{
+    margin-bottom: 5px;
+}
+
+.discription__block {
+    max-width: 100%;
+    max-height: 130px;
+    overflow-y: auto; 
+}
+
+.low-priority{
+    background-color: green;
+}
+
+.medium-priority{
+    background-color: yellow;
+}
+
+.high-priority{
+    background-color: red;
+}
+
+.done-card{
+    opacity: .5;
+}
+.todo-card{
+    opacity: 1;
+}
+
+.hidden{
+    display: none;
+}

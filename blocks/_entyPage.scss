@@ -1,0 +1,27 @@
+body {
+    // background: rgb(2,0,36);
+    background:#B5B5B5;
+}
+
+.mainPage_hero{
+    margin: 15% auto;
+}
+.mainPage_hero_inner{
+    text-align: center;
+}
+.mainPage_hero_hello{
+    color: white;
+    font-family: 'Dela Gothic One', cursive;
+}
+
+.mainPage_hero_BTN{
+    font-family: 'Dela Gothic One', cursive;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
+.mainPage_hero_BTN:hover{
+    opacity: 80%;
+}

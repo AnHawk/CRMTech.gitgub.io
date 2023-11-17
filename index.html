@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mainPage_hero">
+        <div class="container">
+            <div class="mainPage_hero_inner">
+                <h1 class="mainPage_hero_hello">Welcome to CRM Tech Page</h1>
+                <button data-modal-btn="my_modal1" class="mainPage_hero_BTN">Sign in</button>
+            </div>
+        </div>
+    </div>
+
+    <div data-modal-window="my_modal1" class="modal">
+        <div class="modal_content model_content_logIn">
+            <div class="modal_inner">
+                <div class="modal_title">Sign In</div>
+                <div class="close_modal_window">&times;</div>
+            </div>
+                <form>
+                  <div class="form-item">
+                    <label for="email"></label>
+                    <input type="email" name="email" required="required" placeholder="Email Address"></input>
+                  </div>
+                  <div class="form-item">
+                    <label for="password"></label>
+                    <input type="password" name="password" required="required" placeholder="Password"></input>
+                  </div>
+                  <div class="button-panel">
+                    <input type="submit" id="openNewPageButton" class="button" title="Sign In" value="Sign In"></input>
+                  </div>
+                </form>
+              </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+    
+    <script>
+      // Ініціалізація Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyBRsPXwZqwcY4FYW-NttN78lyjg_sDkAiY",
+        authDomain: "crm-tech-support.firebaseapp.com",
+        projectId: "crm-tech-support",
+        storageBucket: "crm-tech-support.appspot.com",
+        messagingSenderId: "1036703644603",
+        appId: "1:1036703644603:web:5d59ea90b9ab0ff452a29e",
+        measurementId: "G-QWWF1QLMZ0"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBRsPXwZqwcY4FYW-NttN78lyjg_sDkAiY",
+        authDomain: "crm-tech-support.firebaseapp.com",
+        projectId: "crm-tech-support",
+        storageBucket: "crm-tech-support.appspot.com",
+        messagingSenderId: "1036703644603",
+        appId: "1:1036703644603:web:5d59ea90b9ab0ff452a29e",
+        measurementId: "G-QWWF1QLMZ0"
+      }; -->
+    
+      <!-- // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app); -->
+    </script>
+    <script>
+      document.getElementById("openNewPageButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        
+        var email = document.getElementsByName("email")[0].value;
+        var password = document.getElementsByName("password")[0].value;
+        
+        firebase.auth().signInWithEmailAndPassword(email, password)
+          .then(function(userCredential) {
+            // Ви успішно увійшли в систему. userCredential містить дані користувача.
+            var user = userCredential.user;
+            
+            // Перевірка чи дані введені правильно
+            if (user) {
+              // Відкрити сторінку blocks/mainpage.html
+              window.location.href = "blocks/mainpage.html";
+            } else {
+              alert("Помилка: Користувача з такими даними не знайдено.");
+            }
+          })
+          .catch(function(error) {
+            // Обробка помилок під час входу.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert("Помилка: " + errorMessage);
+          });
+      });
+    </script>
+    
+    
+    <script src="main.js"></script>
+</body>
+</html>

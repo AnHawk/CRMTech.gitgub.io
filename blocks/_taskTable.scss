@@ -1,0 +1,70 @@
+.taskTable{
+    color: black;
+    // color: white;
+}
+
+.taskTable__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskTable__filters{
+    display: flex;
+    list-style: none;
+}
+
+.taskTable__filter{
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-right: 30px;
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+
+.major{
+    background-color: red;
+}
+
+.middle{
+    background-color: yellow;
+}
+
+.light{
+    background-color: green;
+}
+
+.taskTable__counter{
+    background-color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.tackTable__title{
+    font-family: 'Dela Gothic One', cursive;
+}
+
+.table__inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toDo, #inProggres, #hold, #done{
+    width: 300px;
+    height: 100vh;
+    margin: 20px;
+    border: 2px dashed black;
+}
+
+.table__section{
+    font-family: 'Dela Gothic One', cursive;
+    text-align: center;
+    color: black;
+    // color: #fff;
+    border-bottom: 2px dashed black;
+}

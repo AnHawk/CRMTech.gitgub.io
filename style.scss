@@ -1,0 +1,22 @@
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+//Blocks
+@import "blocks/card";
+@import "blocks/taskTable";
+@import "blocks/header";
+@import "blocks/_entyPage"; 
+@import "blocks/modal";
+@import "blocks/signInModal"
+
+
