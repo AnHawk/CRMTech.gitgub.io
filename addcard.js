@@ -48,8 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="card__info">
                         <div class="card__title">${cardData.title}</div>
                         <div class="card__class">
-                            <div class="card__type">${cardData.department}</div>
-                            <div class="card__priority">${cardData.priority}</div> 
+                            <div class="card__type">${cardData.type}</div>
+                            <div class="card__priority">${cardData.priority}</div>
+                            <div class="card__department">${cardData.department}</div>
                         </div>     
                     </div>
                     <div class="card__date">${cardData.datetime}</div>
