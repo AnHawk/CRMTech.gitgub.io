@@ -25,6 +25,7 @@ body {
 
 .card__inner {
   padding: 10px;
+  color: black;
 }
 
 .card__class {
@@ -72,6 +73,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.card__priority {
+  margin-right: 10px;
 }
 
 .taskTable {

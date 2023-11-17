@@ -12,6 +12,7 @@
 }
 .card__inner{
     padding: 10px;
+    color: black;
 }
 .card__class{
     display: flex;
@@ -57,4 +58,8 @@
 
 .hidden{
     display: none;
+}
+
+.card__priority{
+    margin-right: 10px;
 }
