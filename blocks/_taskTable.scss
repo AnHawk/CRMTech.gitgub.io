@@ -50,13 +50,12 @@
 
 .table__inner{
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 #toDo, #inProggres, #hold, #done{
     width: 300px;
-    height: 100vh;
+    max-height: 100%;
     margin: 20px;
     border: 2px dashed black;
 }

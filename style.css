@@ -130,13 +130,12 @@ body {
 
 .table__inner {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 #toDo, #inProggres, #hold, #done {
   width: 300px;
-  height: 100vh;
+  max-height: 100%;
   margin: 20px;
   border: 2px dashed black;
 }
@@ -211,7 +210,6 @@ a {
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -338,6 +336,7 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 88%;
+  max-height: 100%;
   z-index: 99;
 }
 
@@ -383,7 +382,7 @@ body {
 }
 
 .textarea {
-  height: 200px;
+  height: 50px;
 }
 
 .select {
