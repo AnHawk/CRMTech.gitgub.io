@@ -28,6 +28,15 @@
             <div class="taskTable__inner">
                 <div class="taskTable__header">
                     <div class="tackTable__title">Фільтр:</div>
+                    <!-- Додайте цей HTML-код до вашого HTML-документу в місці, де ви хочете розмістити випадаючий список -->
+<label for="filterDropdown">Обрати пріоритет:</label>
+<select id="filterDropdown">
+    <option value="Всі">Всі</option>
+    <option value="Високий">Високий</option>
+    <option value="Середній">Середній</option>
+    <option value="Низький">Низький</option>
+</select>
+
                     <div class="taskTable__filters">
                         <div class="taskTable__filter major">
                             <span>Високий</span>
@@ -89,6 +98,7 @@
                                         <option value="К8">К8</option>
                                         <option value="К9">К9</option>
                                         <option value="Офіс">Офіс</option>
+                                        <option value="Колл-центр">Колл-центр</option>
                                     </select>
                                 </div>
                             </div>
@@ -151,7 +161,7 @@
         </div>
     </section>
     <script src="../main.js"></script>
-    <!-- <script src="../dragAndDrop.js"></script> -->
+    <script src="../filter.js"></script>
     <script src="../addcard.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>

@@ -236,34 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-
-
-    let currentFilter = null; // Зберігаємо поточний фільтр
-
-    // Додаємо обробники подій для елементів фільтру
-    document.querySelector(".major span").addEventListener("click", function () {
-        filterCardsByPriority("Високий");
-    });
-
-    document.querySelector(".middle span").addEventListener("click", function () {
-        filterCardsByPriority("Середній");
-    });
-
-    document.querySelector(".light span").addEventListener("click", function () {
-        filterCardsByPriority("Низький");
-    });
-
-    function filterCardsByPriority(priority) {
-        const cards = document.querySelectorAll(".card");
-
-        cards.forEach((card) => {
-            if (card.classList.contains(priority.toLowerCase())) {
-                card.classList.remove("hidden");
-            } else {
-                card.classList.add("hidden");
-            }
-        });
-    }
 });
 
 
