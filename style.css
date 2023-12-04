@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .canvas {
   width: 330px;
   height: 300px;
@@ -20,12 +21,8 @@ body {
   color: #fff;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.card__header {
-  display: flex;
-  justify-content: space-between;
+  margin: 10px 5px;
+  border: 1px solid black;
 }
 
 .card__inner {
@@ -35,6 +32,7 @@ body {
 
 .card__class {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
 
@@ -82,6 +80,34 @@ body {
 
 .card__priority {
   margin-right: 10px;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.complete-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.complete-button {
+  /* Скидання стандартних стилів */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  /* Ваші власні стилі тут */
+  /* Наприклад: */
 }
 
 .taskTable {

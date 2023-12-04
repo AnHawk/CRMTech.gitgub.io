@@ -16,12 +16,20 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     firebase.initializeApp(firebaseConfig);
     const database = firebase.firestore();
-
+    
     const addToDoButton = document.getElementById("addToDo");
     const toDoContainer = document.getElementById("toDo");
     const inProggres = document.getElementById("inProggres");
     const hold = document.getElementById("hold");
     const done = document.getElementById("done");
+
+    function applyCompletedStyling(card, completed) {
+        if (completed) {
+            card.style.opacity = 0.5;
+        } else {
+            card.style.opacity = 1;
+        }
+    }
 
     // Функція для створення та додавання карточки на сторінку
     function addCardToPage(cardData, columnId) {
@@ -41,10 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
             taskCounters["Високий"]++;
         }
     
-
         card.innerHTML = `
-            <div class="card__inner">
+            <div class="card__inner data-key="${cardData.key}">
                 <div class="card__header">
+                <div class="card__footer">
+                    <button class="complete-button"><img src="../img/check-mark.png"></button>
+                    <div class="card__date">${cardData.datetime}</div>
+                </div>
+                
                     <div class="card__info">
                         <div class="card__title">${cardData.title}</div>
                         <div class="card__class">
@@ -53,13 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="card__department">${cardData.department}</div>
                         </div>     
                     </div>
-                    <div class="card__date">${cardData.datetime}</div>
+                    
                 </div>
                 <div class="card__description">
                     <div class="discription__block">${cardData.description}</div>
                 </div>
+                
             </div>
         `;
+
+
+        applyCompletedStyling(card, cardData.completed);
 
         // Додаємо обробники подій для новоствореної карточки
         card.addEventListener("dragstart", function (e) {
@@ -137,13 +153,57 @@ document.addEventListener("DOMContentLoaded", function () {
         const column = getColumnById(columnId);
         column.appendChild(card);
 
+        
         updateTaskCounters();
+
 
         function updateTaskCounters() {
             document.querySelector(".major__pr").innerText = taskCounters["Високий"];
             document.querySelector(".middle__pr").innerText = taskCounters["Середній"];
             document.querySelector(".low-priority.light__pr").innerText = taskCounters["Низький"];
         }
+       // Отримуємо дані з LocalStorage при завантаженні сторінки
+        window.addEventListener("load", function () {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const cardData = JSON.parse(localStorage.getItem(key));
+                addCardToPage(cardData, cardData.column);
+            }
+        });
+
+        // Зберігаємо дані в LocalStorage при додаванні нової картки
+        function saveToLocalStorage(cardData) {
+            localStorage.setItem(cardData.key, JSON.stringify(cardData));
+        }
+
+        // Додаємо обробник для кнопки "Task Complete"
+        const completeButton = card.querySelector(".complete-button");
+        completeButton.addEventListener("click", function () {
+            cardData.completed = !cardData.completed;
+            applyCompletedStyling(card, cardData.completed);
+            // Отримуємо поточну дату та час завершення
+            const completionDate = new Date();
+            // Зберігаємо дату та час завершення у форматі, який вам зручний
+            const completionDateString = completionDate.toLocaleString();
+            // Оновлюємо стиль картки, щоб зробити її полупрозорою
+            card.classList.add("done-card");
+            // Оновлюємо дані в Firebase
+            database.collection("cards").doc(cardData.key).update({
+                completed: true,
+                completionDate: completionDateString
+            })
+            .then(function () {
+                console.log("Task marked as complete in Firebase!");
+                // Оновлюємо локальні лічильники і виводимо їх на сторінці
+                updateTaskCounters();
+                // Зберігаємо дані в LocalStorage
+                saveToLocalStorage(cardData);
+            })
+            .catch(function (error) {
+                console.error("Error updating document in Firebase: ", error);
+            });
+        });
+
     }
 
     // Функція для отримання елемента колонки за ідентифікатором
@@ -168,6 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    
+
     addToDoButton.addEventListener("click", function () {
         const todoForm = document.getElementById("todoForm");
 
@@ -186,7 +248,10 @@ document.addEventListener("DOMContentLoaded", function () {
             datetime,
             description,
             column: "toDo", // Початкова колонка
+            completed: false, // Нове поле
+            completionDate: "", // Нове поле
         };
+        
 
         // Додаємо карточку в Firebase
         database.collection("cards").add(cardData)
@@ -203,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Додаємо обробники подій для колонок
-    const columns = [toDoContainer, inProgress, hold, done];
+    const columns = [toDoContainer, inProggres, hold, done];
 
     columns.forEach((column) => {
         column.addEventListener("dragover", function (e) {
@@ -237,5 +302,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
