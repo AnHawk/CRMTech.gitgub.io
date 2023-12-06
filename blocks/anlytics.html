@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-        <title>Document</title>
+        <title>CRM Tech Support</title>
     </head>
 <body>
     <header class="header">
@@ -23,18 +23,45 @@
         </ul>
     </header>
 
-    <section class="canvas">
-        <canvas id="priorityChart"></canvas>
-    </section>
-    <section class="canvas">
-        <canvas id="columnChart" width="400" height="400"></canvas>
-    </section>
+    <div class="analytics">
+        <div class="container">
+            <div class="analytics__header">
+                <section class="average-duration">
+                    <!-- Де ви хочете вивести результат -->
+                    <div id="resultContainer"></div>
+                </section>
+            </div>
+            <div class="analytics__inner">
+                <section class="canvas">
+                    <div class="canvas__header">Аналітика карток за пріорітетами</div>
+                    <canvas id="priorityChart"></canvas>
+                </section>
+                <section class="canvas">
+                    <div class="canvas__header">Аналітика карток за колонками</div>
+                    <canvas id="columnChart" width="400" height="400"></canvas>
+                </section>
+                <section class="canvas">
+                    <div class="canvas__header">Аналітика завершених та активних задач</div>
+                    <canvas id="completionChart"></canvas>
+                </section>
+            </div>
+            <div class="anlytics__footer">
+                <div class="anlytics__footer__header">
+                    Графік швидкості виконання задач
+                        <canvas id="timelineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
     <!-- Посилання на бібліотеку Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="../analytics.js"></script>
 </body>
 </html>
