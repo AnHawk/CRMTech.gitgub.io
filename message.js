@@ -11,7 +11,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Отримання посилання на колекцію "message"
-const messageCollection = firebase.firestore().collection("message");
+const messageCollection = firebase.firestore().collection("messages");
 
 // Отримання контейнера для повідомлень на сторінці
 const messagesContainer = document.getElementById("messagesContainer");
@@ -22,9 +22,9 @@ function displayMessages(messages) {
     messagesContainer.innerHTML = "";
 
     // Вивести кожне повідомлення у вигляді div
-    messages.forEach(message => {
+    messages.forEach(messages => {
         const messageDiv = document.createElement("div");
-        messageDiv.textContent = message.text; // Припускається, що у вашому об'єкті є поле "text"
+        messageDiv.textContent = messages.text; // Припускається, що у вашому об'єкті є поле "text"
         messagesContainer.appendChild(messageDiv);
     });
 }
