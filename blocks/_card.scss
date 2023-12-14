@@ -4,7 +4,7 @@
     align-items: center;
     cursor: pointer;
     margin: 10px 5px;
-    border: 1px solid black;
+    border-radius: 4px;
 }
 
 // .card__header{
@@ -13,7 +13,9 @@
 // }
 .card__inner{
     padding: 10px;
-    color: black;
+    color: #FFFFFF;
+    font-size: 18px;
+
 }
 .card__class{
     display: flex;
@@ -40,15 +42,15 @@
 }
 
 .low-priority{
-    background-color: green;
+    background-color: #10B981;
 }
 
 .medium-priority{
-    background-color: yellow;
+    background-color: #F59E0B;
 }
 
 .high-priority{
-    background-color: red;
+    background-color: #F43F5E;
 }
 
 .done-card{
@@ -95,4 +97,15 @@
 //     background-color: #4CAF50;
 //     color: white;
 //     border-radius: 5px;
+}
+
+/* Add this style to hide archived cards */
+.archived-card {
+    display: none;
+}
+
+.archive-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

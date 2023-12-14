@@ -23,13 +23,91 @@
         </ul>
     </header>
 
-    <div id="messagesContainer"></div>
+    <div class="container">
+    <div id="messagesContainer">
+            <div class="message__inner">
+                <div class="message__sender">Lorem ipsum</div>
+                <div class="message__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quas, aliquid minus vitae veritatis saepe amet error. Tenetur quia dignissimos, ipsam dolor nam fuga ea quidem quisquam nulla, molestiae unde!</div>
+                <div class="message__footer">
+                    <button>Видалити повідомлення</button>
+                    <button>Створити карку</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
+
+    <div data-modal-window="my_modal3" class="modal">
+        <div class="modal_content">
+            <div class="modal_inner">
+                <div class="modal_title">Add To Do</div>
+                <div class="close_modal_window">&times;</div>
+            </div>
+        <form>
+            <div class="form-group">
+                <label for="title" class="form-label">Назва:</label>
+                <input type="text" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="flex: 1; margin-right: 10px;">
+                        <label for="type" class="form-label">Тип:</label>
+                        <select id="type" class="select">
+                            <option value="Технічні проблеми">Технічні проблеми</option>
+                            <option value="Консультація">Консультація</option>
+                            <option value="Адміністрування">Адміністрування</option>
+                            <option value="Допомога за налаштуванням">Допомога за налаштуванням</option>
+                            <option value="Інше">Інше</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; margin-right: 10px;">
+                        <label for="priority" class="form-label">Пріорітет:</label>
+                        <select id="priority" class="select">
+                            <option value="Низький">Низький</option>
+                            <option value="Середній">Середній</option>
+                            <option value="Високий">Високий</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="department" class="form-label">Відділ:</label>
+                        <select id="department" class="select">
+                            <option value="К1">К1</option>
+                            <option value="К2">К2</option>
+                            <option value="К3">К3</option>
+                            <option value="К4">К4</option>
+                            <option value="К5">К5</option>
+                            <option value="К6">К6</option>
+                            <option value="К7">К7</option>
+                            <option value="К8">К8</option>
+                            <option value="К9">К9</option>
+                            <option value="Офіс">Офіс</option>
+                            <option value="Колл-центр">Колл-центр</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="datetime" class="form-label">Дата і час:</label>
+                <input type="datetime-local" id="datetime" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Опис:</label>
+                <textarea id="description" class="form-control textarea"></textarea>
+            </div>
+            <div class="button-panel">
+                <input type="button" id="addToDo" class="button" title="Add To Do" value="Add To Do"></input>
+              </div>
+        </form>
+    </div>           
+    </div>
+
+
     <script src="../main.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script> 
-    <script src="../message.js"></script>
+    <script src="../firebase-init.js"></script>
+    <script src="../message.js"></script> 
 </body>
 </html>

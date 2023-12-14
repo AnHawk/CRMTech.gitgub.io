@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&display=swap');
+
 .canvas{
     width: 330px;
     height: 300px;
@@ -7,6 +9,9 @@ body{
     height: 100%;
     margin: 0;
     padding: 0;
+    background:#E7E7E7;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
 }
 
 .container{
@@ -16,6 +21,7 @@ body{
 
 //Blocks
 @import "blocks/card";
+@import "blocks/messages";
 @import "blocks/analytics";
 @import "blocks/taskTable";
 @import "blocks/header";

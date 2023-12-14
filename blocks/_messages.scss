@@ -1,0 +1,14 @@
+.message__inner{
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #E2E8F0;
+    box-shadow: inset;
+    font-size: 18px;
+}
+
+.message__content{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}

@@ -5,18 +5,6 @@ let taskCounters = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Ініціалізація Firebase
-    var firebaseConfig = {
-        apiKey: "AIzaSyBRsPXwZqwcY4FYW-NttN78lyjg_sDkAiY",
-        authDomain: "crm-tech-support.firebaseapp.com",
-        projectId: "crm-tech-support",
-        storageBucket: "crm-tech-support.appspot.com",
-        messagingSenderId: "1036703644603",
-        appId: "1:1036703644603:web:5d59ea90b9ab0ff452a29e"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.firestore();
-    
     const addToDoButton = document.getElementById("addToDo");
     const toDoContainer = document.getElementById("toDo");
     const inProggres = document.getElementById("inProggres");
@@ -29,6 +17,29 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             card.style.opacity = 1;
         }
+    }
+
+    function applyArchiveStyling(card, archive) {
+        if (archive) {
+            card.style.display = "none";
+            card.style.visibility = "hidden";
+            card.style.position = "absolute";
+        } else {
+            card.style.display = "block";
+            card.style.visibility = "visible";
+            card.style.position = "relative";
+        }
+    }
+    
+
+    function resetForm() {
+        const todoForm = document.getElementById("todoForm");
+        todoForm.querySelector("#title").value = "";
+        todoForm.querySelector("#type").value = "Технічні проблеми";
+        todoForm.querySelector("#priority").value = "Низький";
+        todoForm.querySelector("#department").value = "К1";
+        todoForm.querySelector("#datetime").value = "";
+        todoForm.querySelector("#description").value = "";
     }
 
     // Функція для створення та додавання карточки на сторінку
@@ -54,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card__header">
                 <div class="card__footer">
                     <button class="complete-button"><img src="../img/check-mark.png"></button>
+                    <button class="archive-button"><img src="../img/archive.png"></button>
                     <div class="card__date">${cardData.datetime}</div>
                 </div>
                 
@@ -76,7 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         applyCompletedStyling(card, cardData.completed);
-
+        applyArchiveStyling(card, cardData.archive)
+        
         // Додаємо обробники подій для новоствореної карточки
         card.addEventListener("dragstart", function (e) {
             card.addEventListener("dragstart", function (e) {
@@ -148,6 +161,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.error("Error updating document in Firebase: ", error);
                 });
         });
+
+        const archiveButton = card.querySelector(".archive-button");
+        archiveButton.addEventListener("click", function () {
+            archiveCard(cardData.key);
+        });
+    
+        // Додайте функцію архівації в середину функції addCardToPage
+        function archiveCard(key) {
+            console.log(`Спроба архівувати картку з ключем: ${key}`);
+        
+            // Оновлення архівації в Firebase
+            database.collection("cards").doc(key).update({
+                archive: true
+            })
+            .then(() => {
+                console.log("Картка архівована в Firebase!");
+                card.style.display = "none";
+            })
+            .catch((error) => {
+                console.error("Помилка при оновленні документа в Firebase: ", error);
+            });
+        }
+        
+        
 
         // Додаємо карточку в відповідну колонку
         const column = getColumnById(columnId);
@@ -231,8 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     addToDoButton.addEventListener("click", function () {
-        const todoForm = document.getElementById("todoForm");
-
         const title = document.getElementById("title").value;
         const type = document.getElementById("type").value;
         const priority = document.getElementById("priority").value;
@@ -249,10 +284,12 @@ document.addEventListener("DOMContentLoaded", function () {
             description,
             column: "toDo", // Початкова колонка
             completed: false, // Нове поле
+            archive: false,
             completionDate: "", // Нове поле
+            key: "",
         };
         
-
+        
         // Додаємо карточку в Firebase
         database.collection("cards").add(cardData)
             .then(function (docRef) {
@@ -263,8 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(function (error) {
                 console.error("Error writing document to Firebase: ", error);
             });
-
-        todoForm.reset();
+        resetForm()
     });
 
     // Додаємо обробники подій для колонок

@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <title>CRM Tech Support</title>
 </head>
 <body>
@@ -27,16 +24,39 @@
         <div class="container">
             <div class="taskTable__inner">
                 <div class="taskTable__header">
-                    <div class="tackTable__title">Фільтр:</div>
-                    <!-- Додайте цей HTML-код до вашого HTML-документу в місці, де ви хочете розмістити випадаючий список -->
-<label for="filterDropdown">Обрати пріоритет:</label>
-<select id="filterDropdown">
-    <option value="Всі">Всі</option>
-    <option value="Високий">Високий</option>
-    <option value="Середній">Середній</option>
-    <option value="Низький">Низький</option>
-</select>
-
+                    <div class="fillters">
+                        <label for="priorityFilter">Обрати пріоритет:</label>
+                        <select class="dropdown" id="priorityFilter">
+                            <option value="Всі">Всі</option>
+                            <option value="Високий">Високий</option>
+                            <option value="Середній">Середній</option>
+                            <option value="Низький">Низький</option>
+                        </select>
+                        <label  for="departmentFilter">Відділ</label>
+                        <select class="dropdown" id="departmentFilter">
+                            <option value="Всі">Всі</option>
+                            <option value="К1">К1</option>
+                            <option value="К2">К2</option>
+                            <option value="К3">К3</option>
+                            <option value="К4">К4</option>
+                            <option value="К5">К5</option>
+                            <option value="К6">К6</option>
+                            <option value="К7">К7</option>
+                            <option value="К8">К8</option>
+                            <option value="К9">К9</option>
+                            <option value="Офіс">Офіс</option>
+                            <option value="Колл-центр">Колл-центр</option>
+                        </select>
+                        <label for="typeFilter">Тип</label>
+                        <select class="dropdown" id="typeFilter">
+                            <option value="Всі">Всі</option>
+                            <option value="Технічні проблеми">Технічні проблеми</option>
+                            <option value="Консультація">Консультація</option>
+                            <option value="Адміністрування">Адміністрування</option>
+                            <option value="Допомога за налаштуванням">Допомога за налаштуванням</option>
+                            <option value="Інше">Інше</option>
+                        </select>
+                    </div>
                     <div class="taskTable__filters">
                         <div class="taskTable__filter major">
                             <span>Високий</span>
@@ -52,9 +72,10 @@
                         </div>
                     </div>
 
-                    <button data-modal-btn="my_modal2" class="mainPage_hero_BTN">Add Task</button>
+                    <button data-modal-btn="my_modal2" class="mainPage_hero_BTN">+</button>
                 </div>
                 <div data-modal-window="my_modal2" class="modal">
+                    <form id="todoForm">
                     <div class="modal_content">
                         <div class="modal_inner">
                             <div class="modal_title">Add To Do</div>
@@ -115,7 +136,8 @@
                             <input type="button" id="addToDo" class="button" title="Add To Do" value="Add To Do"></input>
                           </div>
                     </form>
-                </div>           
+                </div>   
+            </form>        
                 </div>
             </div>
         </div>
@@ -125,28 +147,7 @@
         <div class="container">
             <div class="table__inner">
                 <div id="toDo">
-                    <div class="table__section">To do</div>
-
-                    <div class="card" draggable="true">
-                        <div class="card__inner">
-                            <div class="card__header">
-                                <div class="card__info">
-                                    <div class="card__title">Card1</div>
-                                    <div class="card__class">
-                                        <div class="card__type">Tech</div>
-                                        <div class="card__priority">Major</div> 
-                                    </div>     
-                                </div>
-                                <div class="card__date">11.09.2023</div>
-                            </div>
-
-                            <div class="card__description">
-                                <div class="discription__block">Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consectetur</div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                   
+                    <div class="table__section">To do</div>                  
                 </div>
                 <div id="inProggres">
                     <div class="table__section">In Proggres</div>
@@ -161,11 +162,12 @@
         </div>
     </section>
     <script src="../main.js"></script>
-    <script src="../filter.js"></script>
-    <script src="../addcard.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script> 
+    <script src="../firebase-init.js"></script>
+    <script src="../addcard.js"></script>
+    <script src="../filter.js"></script>
 </body>
 </html>
