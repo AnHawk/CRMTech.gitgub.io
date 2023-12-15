@@ -66,21 +66,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card__footer">
                     <button class="complete-button"><img src="../img/check-mark.png"></button>
                     <button class="archive-button"><img src="../img/archive.png"></button>
-                    <div class="card__date">${cardData.datetime}</div>
                 </div>
-                
                     <div class="card__info">
                         <div class="card__title">${cardData.title}</div>
-                        <div class="card__class">
-                            <div class="card__type">${cardData.type}</div>
-                            <div class="card__priority">${cardData.priority}</div>
-                            <div class="card__department">${cardData.department}</div>
-                        </div>     
+                        <div class="discription__block">${cardData.description}</div>    
                     </div>
                     
                 </div>
                 <div class="card__description">
-                    <div class="discription__block">${cardData.description}</div>
+                        <div class="card__class">
+                            <div class="card__type">${cardData.type}</div>
+                            <div class="card__priority">${cardData.priority}</div>
+                            <div class="card__department">${cardData.department}</div>
+                        </div>
+                    <div class="card__date">${cardData.datetime}</div>
                 </div>
                 
             </div>

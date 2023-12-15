@@ -20,13 +20,13 @@ body{
 }
 
 //Blocks
-@import "blocks/card";
-@import "blocks/messages";
-@import "blocks/analytics";
-@import "blocks/taskTable";
-@import "blocks/header";
-@import "blocks/_entyPage"; 
-@import "blocks/modal";
-@import "blocks/signInModal"
+@import "scss/card";
+@import "scss/messages";
+@import "scss/analytics";
+@import "scss/taskTable";
+@import "scss/header";
+@import "scss/_entyPage"; 
+@import "scss/modal";
+@import "scss/signInModal"
 
 

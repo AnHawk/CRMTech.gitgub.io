@@ -4,36 +4,40 @@
     align-items: center;
     cursor: pointer;
     margin: 10px 10px;
-    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-// .card__header{
-//     display: flex;
-//     justify-content: space-between;
-// }
 .card__inner{
-    padding: 10px;
-    color: #FFFFFF;
+    padding: 0 18px;
+    color: #4D515A;
     font-size: 18px;
-
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: inset;
 }
 .card__class{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 26px;
+    font-size: 12px;
 }
 
 .card__type{
-    margin-right: 10px;
+    background-color: #EBF1FC;
+    color: #5D5FEF;
+    padding: 6px;
+    border-radius: 10px;
 }
 
 .card__title{
-    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 26px;
+    margin-top: 26px;
 }
 
-.card__type{
-    margin-bottom: 5px;
-}
 
 .discription__block {
     max-width: 100%;
@@ -65,13 +69,17 @@
 }
 
 .card__priority{
-    margin-right: 10px;
+    background-color: #EBF1FC;
+    color: #5D5FEF;
+    padding: 6px;
+    border-radius: 10px;
 }
 
 .card__footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 18px;
 }
 
 .complete-button img{
@@ -80,7 +88,6 @@
 }
 
 .complete-button {
-    /* Скидання стандартних стилів */
     appearance: none;
     background-color: transparent;
     border: none;
@@ -90,16 +97,9 @@
     margin: 0;
     padding: 0;
     text-align: left;
-
-    /* Ваші власні стилі тут */
-    /* Наприклад: */
-//     padding: 10px;
-//     background-color: #4CAF50;
-//     color: white;
-//     border-radius: 5px;
 }
 
-/* Add this style to hide archived cards */
+
 .archived-card {
     display: none;
 }
@@ -108,4 +108,25 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.card__date{
+    border-top: 1px solid #F2F2F2;
+    padding-top: 26px;
+    padding-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.discription__block{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    margin-bottom: 26px;
+}
+
+.card__department{
+    background-color: #EBF1FC;
+    color: #5D5FEF;
+    padding: 6px;
+    border-radius: 10px;
 }
