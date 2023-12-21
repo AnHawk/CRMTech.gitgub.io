@@ -145,3 +145,14 @@ a {
     display: none;
   }
 }
+
+
+.message{
+  position: relative;
+}
+
+.message__counter{
+  position: absolute;
+  bottom: 0;
+  background-color: #E07706;
+}

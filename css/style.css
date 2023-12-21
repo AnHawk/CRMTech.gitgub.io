@@ -418,6 +418,16 @@ a {
     display: none;
   }
 }
+.message {
+  position: relative;
+}
+
+.message__counter {
+  position: absolute;
+  bottom: 0;
+  background-color: #E07706;
+}
+
 .mainPage_hero {
   margin: 15% auto;
 }
