@@ -1,15 +1,3 @@
-// Ініціалізація Firebase (замініть на свої дані)
-// var firebaseConfig = {
-//     apiKey: "AIzaSyBRsPXwZqwcY4FYW-NttN78lyjg_sDkAiY",
-//     authDomain: "crm-tech-support.firebaseapp.com",
-//     projectId: "crm-tech-support",
-//     storageBucket: "crm-tech-support.appspot.com",
-//     messagingSenderId: "1036703644603",
-//     appId: "1:1036703644603:web:5d59ea90b9ab0ff452a29e"
-// };
-
-// firebase.initializeApp(firebaseConfig);
-
 // Отримання посилання на колекцію "message"
 const messageCollection = firebase.firestore().collection("messages");
 
@@ -61,10 +49,16 @@ messageCollection.get().then((querySnapshot) => {
 
             // Знаходимо <textarea> та підставляємо значення messageData.message
             const descriptionTextarea = modal.querySelector('#description');
-            if (descriptionTextarea) {
+            const datetimeInput = modal.querySelector('#datetime');
+            if (descriptionTextarea && datetimeInput) {
                 // Перевіряємо, чи індекс знайдений та чи існує відповідний об'єкт в масиві messages
                 if (messages[index]) {
                     descriptionTextarea.value = messages[index].message;
+
+                    // Конвертуємо Timestamp у формат дати та часу
+                    const timestamp = messages[index].timestamp.toDate();
+                    const formattedDatetime = timestamp.toISOString().slice(0, 16);
+                    datetimeInput.value = formattedDatetime;
                 }
             }
 
@@ -73,8 +67,6 @@ messageCollection.get().then((querySnapshot) => {
             close.addEventListener('click', function () {
                 closeModal(modal);
             });
-
-            // ... (інші обробники подій для модального вікна)
         });
     });
 }).catch((error) => {
@@ -121,36 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-// // Функція для додавання картки з ключем
-// function addCardToPage(cardData) {
-//     const card = document.createElement("div");
-//     card.className = "card";
-//     card.setAttribute("data-key", cardData.key); // Додаємо ключ до атрибуту 'data-key'
-//     card.innerHTML = `
-//         <div class="card__inner" data-key="${cardData.key}">
-//             <div class="card__header">
-//                 <div class="card__footer">
-//                     <button class="complete-button">Complete</button>
-//                     <div class="card__date">${cardData.datetime}</div>
-//                 </div>
-//                 <div class="card__info">
-//                     <div class="card__title">${cardData.title}</div>
-//                     <div class="card__class">
-//                         <div class="card__type">${cardData.type}</div>
-//                         <div class="card__priority">${cardData.priority}</div>
-//                         <div class="card__department">${cardData.department}</div>
-//                     </div>     
-//                 </div>
-//             </div>
-//             <div class="card__description">
-//                 <div class="discription__block">${cardData.description}</div>
-//             </div>
-//         </div>
-//     `;
-
-//     return card;
-// }
 
 // Отримання посилання на колекцію "cards"
 const cardsCollection = firebase.firestore().collection("cards");
