@@ -46,7 +46,7 @@ messageCollection.get().then((querySnapshot) => {
             const modalName = addTaskButton.getAttribute('data-modal-btn');
             const modal = document.querySelector("*[data-modal-window='" + modalName + "']");
             modal.style.display = "block";
-
+    
             // Знаходимо <textarea> та підставляємо значення messageData.message
             const descriptionTextarea = modal.querySelector('#description');
             const datetimeInput = modal.querySelector('#datetime');
@@ -54,14 +54,16 @@ messageCollection.get().then((querySnapshot) => {
                 // Перевіряємо, чи індекс знайдений та чи існує відповідний об'єкт в масиві messages
                 if (messages[index]) {
                     descriptionTextarea.value = messages[index].message;
-
-                    // Конвертуємо Timestamp у формат дати та часу
+    
+                    // Конвертуємо Timestamp у формат дати та часу з правильною часовою зоною
                     const timestamp = messages[index].timestamp.toDate();
-                    const formattedDatetime = timestamp.toISOString().slice(0, 16);
+                    const options = { timeZone: 'Europe/Kiev', hour12: false };
+                    const formatter = new Intl.DateTimeFormat('en-US', options);
+                    const formattedDatetime = formatter.format(timestamp);
                     datetimeInput.value = formattedDatetime;
                 }
             }
-
+    
             // Додаємо обробник для закриття модального вікна при кліку на кнопку "close"
             const close = modal.querySelector(".close_modal_window");
             close.addEventListener('click', function () {
@@ -69,6 +71,8 @@ messageCollection.get().then((querySnapshot) => {
             });
         });
     });
+    
+
 }).catch((error) => {
     console.error("Error getting documents: ", error);
 });
