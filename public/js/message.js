@@ -1,3 +1,4 @@
+import { format } from 'https://cdn.skypack.dev/date-fns';
 // Отримання посилання на колекцію "message"
 const messageCollection = firebase.firestore().collection("messages");
 
@@ -5,7 +6,7 @@ const messageCollection = firebase.firestore().collection("messages");
 const messagesContainer = document.getElementById("messagesContainer");
 
 // Функція для виведення даних на сторінку
-function displayMessages(messages) {
+export function displayMessages(messages) {
     // Очистити попередні дані в контейнері
     messagesContainer.innerHTML = "";
 
@@ -40,37 +41,37 @@ messageCollection.get().then((querySnapshot) => {
 
     // Додаємо обробник події для кожної кнопки "Add Task"
     const addTaskButtons = document.querySelectorAll('.mainPage_hero_BTN');
-    addTaskButtons.forEach((addTaskButton, index) => {
-        addTaskButton.addEventListener('click', function () {
-            // Знаходимо модальне вікно за допомогою атрибута 'data-modal-window'
-            const modalName = addTaskButton.getAttribute('data-modal-btn');
-            const modal = document.querySelector("*[data-modal-window='" + modalName + "']");
-            modal.style.display = "block";
-    
-            // Знаходимо <textarea> та підставляємо значення messageData.message
-            const descriptionTextarea = modal.querySelector('#description');
-            const datetimeInput = modal.querySelector('#datetime');
-            if (descriptionTextarea && datetimeInput) {
-                // Перевіряємо, чи індекс знайдений та чи існує відповідний об'єкт в масиві messages
-                if (messages[index]) {
-                    descriptionTextarea.value = messages[index].message;
-    
-                    // Конвертуємо Timestamp у формат дати та часу з правильною часовою зоною
-                    const timestamp = messages[index].timestamp.toDate();
-                    const options = { timeZone: 'Europe/Kiev', hour12: false };
-                    const formatter = new Intl.DateTimeFormat('en-US', options);
-                    const formattedDatetime = formatter.format(timestamp);
-                    datetimeInput.value = formattedDatetime;
-                }
-            }
-    
-            // Додаємо обробник для закриття модального вікна при кліку на кнопку "close"
-            const close = modal.querySelector(".close_modal_window");
-            close.addEventListener('click', function () {
-                closeModal(modal);
-            });
-        });
-    });
+ 
+addTaskButtons.forEach((addTaskButton, index) => { 
+    addTaskButton.addEventListener('click', function () { 
+        // Знаходимо модальне вікно за допомогою атрибута 'data-modal-window' 
+        const modalName = addTaskButton.getAttribute('data-modal-btn'); 
+        const modal = document.querySelector("*[data-modal-window='" + modalName + "']"); 
+        modal.style.display = "block"; 
+ 
+        // Знаходимо <textarea> та підставляємо значення messageData.message 
+        const descriptionTextarea = modal.querySelector('#description'); 
+        const datetimeInput = modal.querySelector('#datetime'); 
+        if (descriptionTextarea && datetimeInput) { 
+            // Перевіряємо, чи індекс знайдений та чи існує відповідний об'єкт в масиві messages 
+            if (messages[index]) { 
+                descriptionTextarea.value = messages[index].message; 
+ 
+                // Конвертуємо Timestamp у формат дати та часу з правильною часовою зоною 
+                const timestamp = messages[index].timestamp.toDate(); 
+                const formattedDatetime = format(timestamp, 'yyyy-MM-dd HH:mm', { timeZone: 'Europe/Kiev' }); 
+                datetimeInput.value = formattedDatetime; 
+            } 
+        } 
+ 
+        // Додаємо обробник для закриття модального вікна при кліку на кнопку "close" 
+        const close = modal.querySelector(".close_modal_window"); 
+        close.addEventListener('click', function () { 
+            closeModal(modal); 
+        }); 
+    }); 
+});
+
     
 
 }).catch((error) => {
