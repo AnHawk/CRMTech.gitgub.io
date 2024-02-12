@@ -428,6 +428,16 @@ a {
   background-color: #E07706;
 }
 
+.BTN__delete {
+  font-family: "Inter", sans-serif;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  background-color: #f80000;
+  font-size: 20px;
+}
+
 .mainPage_hero {
   margin: 15% auto;
 }

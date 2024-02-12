@@ -14,6 +14,8 @@ export function displayMessages(messages) {
     messages.forEach(messageData => {
         const message = document.createElement("div");
         message.classList.add("message__inner");
+        const cardKey = messageData.cardKey;
+        message.dataset.cardKey = cardKey;
         message.innerHTML = `
             <div class="message__content">
                 <div class="message__hero">
@@ -22,6 +24,7 @@ export function displayMessages(messages) {
                 </div>
                 <div class="message__footer">
                     <button data-modal-btn="my_modal3" class="mainPage_hero_BTN">+</button>
+                    <button class="BTN__delete">Delete</button>
                 </div>
             </div>
         `;
