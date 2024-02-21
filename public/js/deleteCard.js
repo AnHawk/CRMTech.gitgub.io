@@ -1,3 +1,4 @@
+// Скрипт для видалення
 document.addEventListener('DOMContentLoaded', function () {
     const messagesContainer = document.getElementById("messagesContainer");
 
@@ -29,4 +30,3 @@ async function deleteCard(cardKey) {
         console.log("Document not found!");
     }
 }
-

@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function calculateAverageDuration(cards) {
         let totalDuration = 0;
         let completedCount = 0;
-
+    
         cards.forEach((card) => {
-            if (card.completed && card.datetime && card.completionDate) {
-                const startTime = moment(card.datetime, "YYYY-MM-DDTHH:mm");
-                const endTime = moment(card.completionDate, "DD.MM.YYYY, HH:mm:ss");
-
+            if (typeof card.completed !== 'undefined' && card.datetime && card.completionDate) {
+                const startTime = moment(card.datetime, ["YYYY-MM-DDTHH:mm", "DD.MM.YYYY, HH:mm:ss"]);
+                const endTime = moment(card.completionDate, ["YYYY-MM-DDTHH:mm", "DD.MM.YYYY, HH:mm:ss"]);
+    
                 if (startTime.isValid() && endTime.isValid() && endTime.isSameOrAfter(startTime)) {
                     const duration = endTime.diff(startTime);
                     totalDuration += duration;
@@ -25,16 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Некоректні дані для картки:", card);
             }
         });
-
+    
         if (completedCount > 0) {
             const averageDuration = totalDuration / completedCount;
             const averageDurationHours = moment.duration(averageDuration).asHours();
-
+    
             document.getElementById("resultContainer").innerHTML = `Середнє значення часу виконання задачі (у годинах): ${averageDurationHours.toFixed(2)}`;
         } else {
             console.warn("Немає завершених задач або некоректних дат для обчислення середнього часу.");
         }
     }
+    
+    
 
     function displayCompletionChart(completionCount) {
         const completionChartCanvas = document.getElementById("completionChart").getContext("2d");
@@ -150,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     
+
 
     function getCardDataForAnalytics(callbackPriority, callbackColumn, callbackCompletion, callbackDuration, callbackTimeline) {
         const priorityCounters = {

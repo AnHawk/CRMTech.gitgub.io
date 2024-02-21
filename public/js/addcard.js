@@ -289,16 +289,22 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         
         
-        // Додаємо карточку в Firebase
-        database.collection("cards").add(cardData)
-            .then(function (docRef) {
-                cardData.key = docRef.id;
-                addCardToPage(cardData, cardData.column);
-                console.log("Document successfully written to Firebase!");
-            })
-            .catch(function (error) {
-                console.error("Error writing document to Firebase: ", error);
-            });
+        // Генеруємо новий ключ для карти
+const newCardRef = database.collection("cards").doc();
+const cardKey = newCardRef.id;
+
+// Оновлюємо ключ у об'єкті cardData
+cardData.key = cardKey;
+
+// Додаємо карточку в Firebase з встановленим ключем
+newCardRef.set(cardData)
+    .then(function () {
+        addCardToPage(cardData, cardData.column);
+        console.log("Document successfully written to Firebase!");
+    })
+    .catch(function (error) {
+        console.error("Error writing document to Firebase: ", error);
+    });
         resetForm()
     });
 
